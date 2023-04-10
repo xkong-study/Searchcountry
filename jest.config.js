@@ -86,7 +86,6 @@ export default {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     '^react-native$': 'react-native-web',
-    // identity-obj-proxy mock CSS Modules
     '^.+\\.module\\.(css|less|sass|scss)$': 'identity-obj-proxy'
   },
 

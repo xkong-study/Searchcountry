@@ -5,7 +5,7 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "allowJs": true,
-    "jsx": "react",
+    "tsx": "react",
     "strict": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,

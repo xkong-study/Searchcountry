@@ -1,5 +1,3 @@
-import { render, screen } from '@testing-library/react';
-import MyComponent from '../../Component/MyComponent';
 require('@babel/register');
 const MockAdapter = require('axios-mock-adapter');
 

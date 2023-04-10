@@ -1,5 +1,5 @@
 import '../css/country.css';
-import React, {useRef, useEffect, useState, Suspense, lazy} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import {countries} from "../static/country";
@@ -31,7 +31,7 @@ export default function MyComponent() {
     const [zoom, setZoom] = useState(1.5);
     const [location,setLocation] = useState();
     const [text,setText] = useState({'lng':lng, 'lat':lat})
-    const [country,setCountry] = useState()
+    const [country,setCountry] = useState([])
 
     useEffect(()=>{
         let params = {'name':'Ireland'}
