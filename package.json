@@ -52,6 +52,7 @@
     "babel-jest": "^29.5.0",
     "jest": "^27.5.1",
     "jest-environment-jsdom-fourteen": "^1.0.1",
+    "ts-jest": "^29.1.0",
     "typescript": "^3.2.1"
   },
   "proxy": "https://xkong-country.herokuapp.com"
