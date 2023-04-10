@@ -1,0 +1,51 @@
+.all{
+    background-color: #fadce0;
+    width: 100%;
+    height: 50rem;
+    margin-bottom: -2rem;
+    position:absolute;
+}
+
+.home{
+    width: 80%;
+    background-color: white;
+    box-sizing: content-box;
+    height: 45rem;
+    border-radius: 25px;
+    box-shadow: 2px 22px 48px 1px rgba(0,0,0,0.75);
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+}
+
+.search{
+    display:flex;
+    justify-content: space-between;
+    margin-right:5rem;
+    align-items: stretch;
+}
+
+.map-container {
+    width:50%;
+    height:45rem;
+    border-radius: 25px 0px 0px 25px;
+}
+
+.header{
+    display:flex;
+    justify-content: flex-start;
+    margin-right:5rem;
+    align-items: stretch;
+    margin-top:1rem
+}
+
+.button{
+    width: 50px;
+    height: 48px;
+    background-color: #F9624C;
+    color: white;
+    border: 0px;
+    border-radius: 15px;
+    cursor: pointer;
+}

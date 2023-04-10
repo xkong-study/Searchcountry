@@ -1,0 +1,27 @@
+.ball-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.ball {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.5rem;
+    background-color: #007bff;
+    border-radius: 50%;
+    animation: ball-loader 0.2s ease-in-out infinite;
+}
+
+@keyframes ball-loader {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1.5rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
