@@ -30,7 +30,6 @@ export default function MyComponent() {
     const [lat, setLat] = useState(42.35);
     const [zoom, setZoom] = useState(1.5);
     const [location,setLocation] = useState();
-    const [text,setText] = useState({'lng':lng, 'lat':lat})
     const [country,setCountry] = useState([])
 
     useEffect(()=>{

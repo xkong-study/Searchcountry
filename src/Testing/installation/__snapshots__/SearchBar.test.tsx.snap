@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autocomplete component should render Autocomplete component correctly 1`] = `ShallowWrapper {}`;
+
+exports[`mock search country api test 1`] = `undefined`;

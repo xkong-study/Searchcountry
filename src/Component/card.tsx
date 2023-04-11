@@ -4,39 +4,37 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import {useEffect} from "react";
 
 export default function ActionAreaCard(props) {
     const item = props.props
-    let currency
-    let currency_name
-    let currency_symbol
-
-    useEffect(()=>{
-        currency = Object.keys(item.currency);
-        currency_name = (Object.values(item.currency)[0] as any).name;
-        currency_symbol = (Object.values(item.currency)[0] as any).symbol;
-    },[item])
-
     return (
         <Card sx={{ maxWidth: 345,height: 430}} style={{marginTop:"1rem"}}>
-            <CardActionArea>
+            <CardActionArea data-testid="card-action-area">
                 <CardMedia
                     component="img"
                     height="180"
                     image={item?.flag}
+                    data-testid="card-media"
                 />
                 {item?
-                    <CardContent>
+                    <CardContent data-testid="card-content">
                         <Typography gutterBottom variant="h6" component="div">
                             {item.common_name}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            {item.official_name}({item.short_name})
-                            <p>region:{item.region}</p>
-                            <p>timezone:{item.timezone}</p>
-                            <p>capital:{item.capital}</p>
-                            {currency}:{currency_name}{currency_symbol}
+                        <Typography gutterBottom variant="body1" component="div">
+                           {item.official_name}({item.short_name})
+                        </Typography>
+                        <Typography gutterBottom variant="body1" component="div">
+                            region:{item.region}
+                        </Typography>
+                        <Typography gutterBottom variant="body1" component="div">
+                            timezone:{item.timezone}
+                        </Typography>
+                        <Typography gutterBottom variant="body1" component="div">
+                            capital:{item.capital}
+                        </Typography>
+                        <Typography gutterBottom variant="body1" component="div">
+                            {Object.keys(item.currency)}:{(Object.values(item.currency)[0] as any).name} {(Object.values(item.currency)[0] as any).symbol}
                         </Typography>
                     </CardContent>:null
                 }

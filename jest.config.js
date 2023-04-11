@@ -99,7 +99,7 @@ export default {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  "presets": ["@babel/preset-env", "@babel/preset-react","ts-jest",{targets: {node: 'current'}},'@babel/preset-typescript'],
+  "preset": "@babel/preset-env",
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -133,7 +133,9 @@ export default {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupTests.js 中对 expect 方法进行了加强，见下文
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
+  setupFilesAfterEnv: [
+    "@testing-library/jest-dom/extend-expect"
+  ],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -178,7 +180,10 @@ export default {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
+    // '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.ts?$': 'ts-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': "babel-jest"
+    // "^.+\\.jsx?$": "@babel/preset-react"
     // '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js',
     // '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '<rootDir>/config/jest/fileTransform.js'
   },
