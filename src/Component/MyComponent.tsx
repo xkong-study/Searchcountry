@@ -51,6 +51,7 @@ export default function MyComponent() {
         let params = {'name':inputText}
         SearchApi({params}).then(res => {
             res.map((i:any)=>{
+                console.log(i)
                 setLocation(i)
                 setLng(i.lng)
                 setLat(i.lat)
@@ -69,6 +70,40 @@ export default function MyComponent() {
             center: [lng, lat],
             zoom: zoom
         });
+        // @ts-ignore
+        let country_array=['United Kingdom','Ireland']
+        map.current.on('click', function(e) {
+            let lngLat = e.lngLat.toArray();
+            let markerClicked = false;
+            let url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + lngLat[0] + ',' + lngLat[1] + '.json?types=country&access_token=' + mapboxgl.accessToken;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var countryName = data.features[0].text;
+                    console.log('Country Name:', countryName);
+                    country_array.push(countryName)
+                    const marker = new mapboxgl.Marker().setLngLat([lngLat[0], lngLat[1]]).addTo(map.current);
+                    marker.getElement().addEventListener('click', () => {
+                        let params = {'name': countryName }
+                        let length = country_array.length
+                        if (!markerClicked&&country_array[length-1]!=country_array[length-2]) {
+                            markerClicked = true;
+                            SearchApi({params}).then(res => {
+                                console.log(res)
+                                res.map((i:any)=>{
+                                    setLocation(i)
+                                    setLng(i.lng)
+                                    setLat(i.lat)
+                                })
+                                setCountry(res)
+                            }).catch(function (err) {
+                                console.log(err)
+                            })
+                        }
+                    })
+                })
+                .catch(error => console.error(error));
+        });
         if(country){
             country.forEach((i)=>{
                 const marker = new mapboxgl.Marker().setLngLat([i.lng, i.lat]).addTo(map.current);
@@ -79,6 +114,8 @@ export default function MyComponent() {
             })
         }
     },[lat,lng]);
+
+
 
     return (
         <div>
