@@ -7,7 +7,7 @@ export default function App() {
   return (
         <Router>
           <Routes>
-            <Route path="/home" element={<Country/>}/>
+            <Route path="/" element={<Country/>}/>
           </Routes>
         </Router>
   );

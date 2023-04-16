@@ -1,6 +1,6 @@
 # Know a country
 
-Try this web application at https://knowacountry.herokuapp.com/
+Try this web application at https://kcountry.herokuapp.com/
 
 ## Table of Contents
 

@@ -62,6 +62,8 @@ export default function MyComponent() {
         })
     }
 
+
+
     useEffect(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoieGtvbmciLCJhIjoiY2xlOTQ2Z2l4MGx4MDNwbWVybnd6d3h6YyJ9.YlGtHyrIuAzzcf9ubGP5rA';
         map.current = new mapboxgl.Map({
@@ -70,6 +72,7 @@ export default function MyComponent() {
             center: [lng, lat],
             zoom: zoom
         });
+
         // @ts-ignore
         let country_array=['United Kingdom','Ireland']
         map.current.on('click', function(e) {
@@ -79,18 +82,19 @@ export default function MyComponent() {
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    var countryName = data.features[0].text;
+                    let countryName = data.features[0].text;
                     console.log('Country Name:', countryName);
                     country_array.push(countryName)
-                    const marker = new mapboxgl.Marker().setLngLat([lngLat[0], lngLat[1]]).addTo(map.current);
-                    marker.getElement().addEventListener('click', () => {
-                        let params = {'name': countryName }
-                        let length = country_array.length
-                        if (!markerClicked&&country_array[length-1]!=country_array[length-2]) {
+                    let length = country_array.length
+                    if (!markerClicked&&country_array[length-1]!=country_array[length-2]) {
+                        const marker = new mapboxgl.Marker().setLngLat([lngLat[0], lngLat[1]]).addTo(map.current);
+                        marker.getElement().addEventListener('click', () => {
+                            let params = {'name': countryName}
+                            console.log(country_array)
                             markerClicked = true;
                             SearchApi({params}).then(res => {
                                 console.log(res)
-                                res.map((i:any)=>{
+                                res.map((i: any) => {
                                     setLocation(i)
                                     setLng(i.lng)
                                     setLat(i.lat)
@@ -99,8 +103,8 @@ export default function MyComponent() {
                             }).catch(function (err) {
                                 console.log(err)
                             })
-                        }
-                    })
+                        })
+                    }
                 })
                 .catch(error => console.error(error));
         });
